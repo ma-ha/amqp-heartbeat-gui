@@ -1,0 +1,30 @@
+{
+	"name":"amq-heartbeat-gui",
+	"version":"0.1.0",
+	"description":"Show heartbeat status of services in Web UI",
+	"author":"MH",
+	"main":"index.js",
+	"scripts":{
+		"start":"node index.js"
+	},
+	"dependencies":{
+		"mongodb":"^2.2.9",
+		"minimist":"^1.2.0",
+		"npmlog":"^4.0.0",
+		"dateformat":"^1.0.12",
+		"easy-web-app":"^0.9.2"
+	},
+	"keywords":[
+		"RabbiMQ",
+		"MicroServices",
+		"Service",
+		"Registry",
+		"Web GUI", "UI",
+		"Service Status"
+	],
+	"repository":{
+		"type":"git",
+		"url":"https://github.com/ma-ha/amqp-heartbeat-gui.git"
+	},
+	"license":"MIT"
+}
