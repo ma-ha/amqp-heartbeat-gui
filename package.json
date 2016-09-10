@@ -1,6 +1,6 @@
 {
 	"name":"amq-heartbeat-gui",
-	"version":"0.1.0",
+	"version":"1.0.0",
 	"description":"Show heartbeat status of services in Web UI",
 	"author":"MH",
 	"main":"index.js",
