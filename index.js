@@ -13,7 +13,6 @@ var mongoDB   = 'dashboard'
 if ( argv[ 'mongoHost' ] ) { mongoHost = argv[ 'mongoHost' ] }
 if ( argv[ 'mongoDB' ]   ) { mongoDB   = argv[ 'mongoDB' ] }
 var mongoDbURL  = 'mongodb://'+mongoHost+':27017/'+mongoDB
-log.info( 'MongoDB', mongoDbURL )
 
 // ----------------------------------------------------------------------------
 // define the GUI  page
