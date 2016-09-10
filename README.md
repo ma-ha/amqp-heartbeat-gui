@@ -30,4 +30,4 @@ See [amqp-heartbeat package](https://github.com/ma-ha/amqp-heartbeat-to-mongodb)
 
     node index.js --mongoHost=localhost 
    
-Open the URL http://localhost:8888/heartbeat/index.html in your browser.
+Open the URL *http://localhost:8888/heartbeat/index.html* in your browser.
