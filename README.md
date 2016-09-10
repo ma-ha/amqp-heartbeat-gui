@@ -4,6 +4,11 @@ to RabbitMA and collected via
 [amqp-heartbeat-to-mongodb package](https://www.npmjs.com/package/amqp-heartbeat-to-mongodb)
 to a MongoDB.
 
+![demo screen shot](http://bit.ly/heartbeat_web_ui) 
+ 
+The GUI uses the [Easy-Web-App Node.js package](https://www.npmjs.com/package/easy-web-app). 
+Please check the docu there, how to add security or change the view or add pages and functionality. 
+
 ## Full Set Up
 
 ### MongoDB (Docker)
@@ -23,3 +28,4 @@ See [amqp-heartbeat package](https://github.com/ma-ha/amqp-heartbeat-to-mongodb)
 
    node index.js --mongoHost=localhost 
    
+Open the URL http://localhost:8888/heartbeat/index.html in your browser.
