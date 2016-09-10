@@ -18,11 +18,11 @@ to a MongoDB.
     
 ### Service With Heartbeat
 
-TODO    
+See [amqp-heartbeat example](https://github.com/ma-ha/amqp-heartbeat) 
     
 ### Heartbeat-To-MongoDB Service
 
-TODO
+See [amqp-heartbeat package](https://github.com/ma-ha/amqp-heartbeat-to-mongodb) 
 
 ### Heartbeat Web UI
 
