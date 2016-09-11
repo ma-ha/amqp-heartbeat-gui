@@ -31,3 +31,8 @@ See [amqp-heartbeat package](https://github.com/ma-ha/amqp-heartbeat-to-mongodb)
     node index.js --mongoHost=localhost 
    
 Open the URL *http://localhost:8888/heartbeat/index.html* in your browser.
+
+## Run as Docker Container 
+
+    docker build -t heartbeat/gui .
+    docker run -d --link mongodb:mongo -p 8888:8888 --name heartbeat-gui heartbeat/gui

@@ -8,7 +8,7 @@ var pjson = require('./package.json');
 // evaluate arguments
 var argv = require('minimist')(process.argv.slice(2));
 
-var mongoHost = 'localhost'
+var mongoHost = 'mongo'
 var mongoDB   = 'dashboard'
 if ( argv[ 'mongoHost' ] ) { mongoHost = argv[ 'mongoHost' ] }
 if ( argv[ 'mongoDB' ]   ) { mongoDB   = argv[ 'mongoDB' ] }
