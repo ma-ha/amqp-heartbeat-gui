@@ -32,6 +32,7 @@ mainPage.addView(
       [
         'Health=light|5%',
         'Service~Name=name',
+        'Version=version',
         'Check=check',
         'Service~Status=status',
         'Checking~since=started'
@@ -47,6 +48,7 @@ var svc  = gui.getExpress();
 svc.get( 
 	  '/services', 
 	  function( req, res ) {
+	  	//log.info( 'services','start')
 			MongoClient.connect( mongoDbURL, function( err, db ) {
 				if ( ! err ) {
 				  db.collection( 'services' ).find( {} ).toArray( 
@@ -67,6 +69,7 @@ svc.get(
 				  			}
 				  			if ( svc[ docs[i].serviceName ].newest < docs[i].heartbeatTime )  {
 				  				svc[ docs[i].serviceName ].newest  = docs[i].heartbeatTime
+				  				svc[ docs[i].serviceName ].version = docs[i].serviceVersion 
 				  				svc[ docs[i].serviceName ].started = docs[i].serviceStart
 				  				svc[ docs[i].serviceName ].status  = docs[i].status
 				  				//log.info( 'x', docs[i] )
@@ -87,10 +90,11 @@ svc.get(
 				  		for ( var i in svc ) {
 				  			var s = 
 				  				{ 
-				  					name: i, 
-				  					check: '', 
-				  					status: svc[ i ].status, 
-				  					light: '<span style="color:#444;">&#9728;</span>', 
+				  					name   : i, 
+				  					check  : '', 
+				  					version: svc[ i ].version, 
+				  					status : svc[ i ].status, 
+				  					light  : '<span style="color:#444;">&#9728;</span>', 
 				  					started: '' 
 				  				}
 				  			if ( svc[i].alive == 1 ) {
@@ -115,7 +119,10 @@ svc.get(
 						  db.close()
 				  	} 
 				  )
-				} else { res.json( {} ) }
+				} else {
+					log.error( "service", 'can not connect to MongoDB "'+mongoDbURL+'": '+err )
+					res.json( {} ) 
+				}
 			} )
 	  }
 	)
