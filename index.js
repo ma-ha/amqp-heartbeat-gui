@@ -64,6 +64,7 @@ svc.get(
 				  						newest:  0,
 				  						check:   'never started',
 				  						status:  '',
+				  						version: '',
 				  						started: 0
 				  					}
 				  			}
@@ -94,24 +95,24 @@ svc.get(
 				  					check  : '', 
 				  					version: svc[ i ].version, 
 				  					status : svc[ i ].status, 
-				  					light  : '<span style="color:#444;">&#9728;</span>', 
+				  					light  : '<span style="color:#444;">--</span>', 
 				  					started: '' 
 				  				}
 				  			if ( svc[i].alive == 1 ) {
 				  				s.check = 'Service OK'
-				  				s.light = '<span style="color:#0C0;">&#9728;</span>'
+				  				s.light = '<span style="color:#0C0;">OK</span>'
 				  				if ( svc[ i ].started  ) { 
 					  				s.started = dateFormat( svc[ i ].started , "dd.mm.yyyy, HH:MM:ss " )			  					
 				  				} 
 				  			} else if ( svc[i].alive > 1 ) {
 				  				s.check = 'Service OK and in HA '
-				  				s.light = '<span style="color:#0F0;">&#9728;</span>'
+				  				s.light = '<span style="color:#0F0;">HA</span>'
 				  				if ( svc[ i ].started  ) { 
 				  					s.started = dateFormat( svc[ i ].started , "dd.mm.yyyy, HH:MM:ss " )
 				  				}
 				  			} else {
 				  				s.check = svc[i].stat 
-				  				s.light = '<span style="color:#F00;">&#9728;</span>'
+				  				s.light = '<span style="color:#F00;">no&nbsp;heartbeart</span>'
 				  			}
 				  			svcHealth.push( s )
 				  		}
