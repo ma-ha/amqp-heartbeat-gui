@@ -17,6 +17,7 @@ var mongoDbURL  = 'mongodb://'+mongoHost+':27017/'+mongoDB
 // ----------------------------------------------------------------------------
 // define the GUI  page
 var mainPage = gui.init( 'Service Heartbeats', 8888, '/heartbeat' )
+mainPage.setPageWidth( '90%' )
 mainPage.title = 'Home'
 mainPage.addView( 
   { 
@@ -30,11 +31,12 @@ mainPage.addView(
     pollDataSec: "5",
     easyCols:
       [
-        'Health=light|5%',
+        'Health=light|10%',
         'Service~Name=name',
         'Version=version',
         'Check=check',
         'Service~Status=status',
+        'Error~Messages=error',
         'Checking~since=started'
       ]
   } 
@@ -64,6 +66,7 @@ svc.get(
 				  						newest:  0,
 				  						check:   'never started',
 				  						status:  '',
+				  						error:   '',
 				  						version: '',
 				  						started: 0
 				  					}
@@ -73,6 +76,7 @@ svc.get(
 				  				svc[ docs[i].serviceName ].version = docs[i].serviceVersion 
 				  				svc[ docs[i].serviceName ].started = docs[i].serviceStart
 				  				svc[ docs[i].serviceName ].status  = docs[i].status
+				  				svc[ docs[i].serviceName ].error   = docs[i].error
 				  				//log.info( 'x', docs[i] )
 				  			}			  			
 				  		}
@@ -93,13 +97,18 @@ svc.get(
 				  				{ 
 				  					name   : i, 
 				  					check  : '', 
+				  					error  : svc[ i ].error, 
 				  					version: svc[ i ].version, 
 				  					status : svc[ i ].status, 
 				  					light  : '<span style="color:#444;">--</span>', 
 				  					started: '' 
 				  				}
 				  			if ( svc[i].alive == 1 ) {
-				  				s.check = 'Service OK'
+				  				if ( s.error && s.error != '') {
+					  				s.check = 'Service Up with Error'
+				  				} else  {
+					  				s.check = 'Service OK'				  					
+				  				}
 				  				s.light = '<span style="color:#0C0;">OK</span>'
 				  				if ( svc[ i ].started  ) { 
 					  				s.started = dateFormat( svc[ i ].started , "dd.mm.yyyy, HH:MM:ss " )			  					
